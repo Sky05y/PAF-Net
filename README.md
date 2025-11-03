@@ -46,7 +46,7 @@ python val.py
 This dataset contains **2,521 annotated skeletal X-ray images** for bone fracture detection, divided into training, validation, and test sets.  
 It is widely used for evaluating lightweight detection architectures.
 
-**Download Link:** [https://universe.roboflow.com/bone-fracture-detection/bone-fracture-detection](https://universe.roboflow.com/bone-fracture-detection/bone-fracture-detection)
+**Download Link:** [https://universe.roboflow.com/yukseklisans/fracnonfrac](https://universe.roboflow.com/yukseklisans/fracnonfrac)
 
 ---
 
@@ -55,5 +55,4 @@ It is widely used for evaluating lightweight detection architectures.
 The **GRAZPEDWRI-DX** dataset is a large-scale pediatric wrist trauma X-ray dataset collected between 2008 and 2018, containing **over 20,000 labeled images from more than 6,000 patients**.  
 It serves as a benchmark for evaluating the robustness of medical image detection models.
 
-**Paper Link:** [https://www.nature.com/articles/s41597-022-01328-z](https://www.nature.com/articles/s41597-022-01328-z)  
-**Kaggle Mirror:** [https://www.kaggle.com/datasets/andrewmvd/graze-pediatric-x-ray](https://www.kaggle.com/datasets/andrewmvd/graze-pediatric-x-ray)
+**Download Link:** [https://www.nature.com/articles/s41597-022-01328-z](https://www.nature.com/articles/s41597-022-01328-z)
