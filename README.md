@@ -1,18 +1,19 @@
-# 🧠 PAF-Net: Pyramid Attention Fusion Network for Enhanced Object Detection
+# PAF-Net: Progressive Alignment and Feature Fusion Network for Detecting Microfractures in X-Ray Images
 
 ## 01. Overview of the Proposed Model
 
-We propose **PAF-Net (Pyramid Attention Fusion Network)**, a novel architecture designed to improve the representation of multi-scale and small-object features in dense object detection tasks.  
-In PAF-Net, we integrate a **Pyramid Attention Fusion (PAF) module** that hierarchically fuses features from multiple levels with adaptive attention weighting. This design enhances context awareness and maintains spatial detail, addressing common weaknesses in existing one-stage detectors.  
+PAF-Net (Progressive Alignment and Feature Fusion Network) is a lightweight detection architecture designed to enhance accuracy in skeletal X-ray microfracture detection.  
+The model integrates three major components:  
 
-In addition, the **ReLU6-based activation** and **lightweight fusion blocks** are applied to reduce computational complexity while maintaining accuracy.  
-*(학위논문 그림 1)*
+- **PDC (Pinwheel-shaped Dual-Split Attention Convolution):** Suppresses background interference and enhances skeletal region perception.  
+- **CAGS (Content-Aware Guided Sampling):** Dynamically refines upsampling to restore fine fracture details.  
+- **LR (Low-Rank Asymmetric Reconstruction):** Combines low-rank decomposition and asymmetric convolution for efficient directional feature fusion.  
 
 ---
 
 ## 02. Environment
 
-Before running training or validation, please install all required dependencies using the following command:
+Install the dependencies before training or validation:
 
 ```bash
 pip install -r requirements.txt
@@ -22,82 +23,69 @@ pip install -r requirements.txt
 
 ## 03. Model Training Example
 
-### 💻 Command Line
-To start training, run the following command:
+### Command Line
 
 ```bash
-python start_train.py --model cfg/models/pafnet.yaml                       --dataset_config cfg/datasets/COCO.yaml                       --epochs 150                       --output_dir E:/PAFNet_train/                       --run_name PAFNet_COCO_Exp01
+python start_train.py --model cfg/models/pafnet.yaml                       --dataset_config cfg/datasets/BoneFracture.yaml                       --epochs 150                       --output_dir E:/PAFNet_train/                       --run_name PAFNet_BoneFracture_Exp01
 ```
 
-### 📓 Notebook Example (.ipynb)
+### Notebook (.ipynb)
 
 ```python
 from ultralytics import YOLO
 from multiprocessing import freeze_support
 
-# Set the model path
+# Set paths
 model_path = 'E:/Degree_project/PAF-Net/cfg/models/pafnet.yaml'
-
-# Set the dataset config path
-data_path = 'E:/Degree_project/PAF-Net/cfg/datasets/COCO.yaml'
-
-# Set the project output path
+data_path = 'E:/Degree_project/PAF-Net/cfg/datasets/BoneFracture.yaml'
 project_path = 'E:/PAFNet_train/'
 
-# Load the model
+# Load model
 model = YOLO(model_path)
 
 if __name__ == '__main__':
     freeze_support()
-
-    # Train the model
-    model.train(data=data_path, epochs=150, project=project_path, name='PAFNet_COCO_Exp01')
+    model.train(data=data_path, epochs=150, project=project_path, name='PAFNet_BoneFracture_Exp01')
 ```
 
 ---
 
 ## 04. Model Validation Example
 
-### 📓 Notebook Example (.ipynb)
-
 ```python
 from ultralytics import YOLO
 
-# Load the trained model
-model = YOLO("E:/PAFNet_train/PAFNet_COCO_Exp01/weights/best.pt")  # Custom trained model
+# Load trained model
+model = YOLO("E:/PAFNet_train/PAFNet_BoneFracture_Exp01/weights/best.pt")
 
-# Validate the model
-metrics = model.val()  # Retains dataset and settings automatically
-
-# Display key metrics
+# Validate
+metrics = model.val()
 metrics.box.map     # mAP50-95
 metrics.box.map50   # mAP50
 metrics.box.map75   # mAP75
-metrics.box.maps    # List of mAP50-95 values for each category
+metrics.box.maps    # List of mAP values per class
 ```
 
 ---
 
 ## 05. Key Features
 
-- **Pyramid Attention Fusion (PAF)** module for hierarchical feature integration  
-- **Lightweight multi-scale fusion** preserving spatial detail  
-- **Adaptive attention weighting** to highlight small-object features  
+- Progressive feature alignment with PDC and CAGS modules  
+- Low-rank asymmetric feature fusion for lightweight performance  
+- Enhanced robustness against background interference  
+- Improved restoration of small-scale fracture structures  
 - Compatible with YOLOv8 training framework  
-- **ReLU6 activation** for better numerical stability  
 
 ---
 
 ## 06. Citation
 
-If you use **PAF-Net** in your research, please cite:
-
 ```
-@article{YourName2025PAFNet,
-  title={PAF-Net: Pyramid Attention Fusion Network for Enhanced Object Detection},
-  author={Your Name and Others},
-  year={2025},
-  journal={Thesis / Conference Name},
+@article{Zhang2025PAFNet,
+  title={Progressive Alignment and Feature Fusion Network for Detecting Microfractures in X-Ray Images},
+  author={Dan Zhang and Yitao Mai and Xiaohuan Zhang and Penghao Jiang},
+  journal={Medical Imaging Research},
+  year={2025}
 }
 ```
 
@@ -105,5 +93,4 @@ If you use **PAF-Net** in your research, please cite:
 
 ## 07. Acknowledgments
 
-This work builds upon the **Ultralytics YOLOv8** framework and integrates techniques inspired by **CBAM**, **FPN**, and **EfficientDet**.  
-Special thanks to the open-source community for providing invaluable tools for vision research.
+This work was supported by the Education Department of Guangdong Province, project “Research on an Accurate Segmentation Model for PET/CT Multimodal Lung Cancer Lesion Regions Based on Feature-Adaptive U-Net” (Grant No. 2024KTSCX088).
