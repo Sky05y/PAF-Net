@@ -26,71 +26,15 @@ pip install -r requirements.txt
 ### Command Line
 
 ```bash
-python start_train.py --model cfg/models/pafnet.yaml                       --dataset_config cfg/datasets/BoneFracture.yaml                       --epochs 150                       --output_dir E:/PAFNet_train/                       --run_name PAFNet_BoneFracture_Exp01
-```
-
-### Notebook (.ipynb)
-
-```python
-from ultralytics import YOLO
-from multiprocessing import freeze_support
-
-# Set paths
-model_path = 'E:/Degree_project/PAF-Net/cfg/models/pafnet.yaml'
-data_path = 'E:/Degree_project/PAF-Net/cfg/datasets/BoneFracture.yaml'
-project_path = 'E:/PAFNet_train/'
-
-# Load model
-model = YOLO(model_path)
-
-if __name__ == '__main__':
-    freeze_support()
-    model.train(data=data_path, epochs=150, project=project_path, name='PAFNet_BoneFracture_Exp01')
+python train.py --model cfg/models/PAF-Net.yaml --dataset_config cfg/datasets/BoneFracture.yaml --epochs 200 --output_dir ./output --run_name PAFNet_BoneFracture_Exp01
 ```
 
 ---
 
 ## 04. Model Validation Example
 
-```python
-from ultralytics import YOLO
-
-# Load trained model
-model = YOLO("E:/PAFNet_train/PAFNet_BoneFracture_Exp01/weights/best.pt")
-
-# Validate
-metrics = model.val()
-metrics.box.map     # mAP50-95
-metrics.box.map50   # mAP50
-metrics.box.map75   # mAP75
-metrics.box.maps    # List of mAP values per class
+```bash
+python val.py
 ```
 
 ---
-
-## 05. Key Features
-
-- Progressive feature alignment with PDC and CAGS modules  
-- Low-rank asymmetric feature fusion for lightweight performance  
-- Enhanced robustness against background interference  
-- Improved restoration of small-scale fracture structures  
-- Compatible with YOLOv8 training framework  
-
----
-
-## 06. Citation
-
-```
-@article{Zhang2025PAFNet,
-  title={Progressive Alignment and Feature Fusion Network for Detecting Microfractures in X-Ray Images},
-  author={Dan Zhang and Yitao Mai and Xiaohuan Zhang and Penghao Jiang},
-  journal={Medical Imaging Research},
-  year={2025}
-}
-```
-
----
-
-## 07. Acknowledgments
-
-This work was supported by the Education Department of Guangdong Province, project “Research on an Accurate Segmentation Model for PET/CT Multimodal Lung Cancer Lesion Regions Based on Feature-Adaptive U-Net” (Grant No. 2024KTSCX088).
