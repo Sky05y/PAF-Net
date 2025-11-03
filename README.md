@@ -5,9 +5,9 @@
 PAF-Net (Progressive Alignment and Feature Fusion Network) is a lightweight detection architecture designed to enhance accuracy in skeletal X-ray microfracture detection.  
 The model integrates three major components:  
 
-- **PDC (Pinwheel-shaped Dual-Split Attention Convolution):** Suppresses background interference and enhances skeletal region perception.  
-- **CAGS (Content-Aware Guided Sampling):** Dynamically refines upsampling to restore fine fracture details.  
-- **LR (Low-Rank Asymmetric Reconstruction):** Combines low-rank decomposition and asymmetric convolution for efficient directional feature fusion.  
+**PDC (Pinwheel-shaped Dual-Split Attention Convolution):** Suppresses background interference and enhances skeletal region perception.  
+**CAGS (Content-Aware Guided Sampling):** Dynamically refines upsampling to restore fine fracture details.  
+**LR (Low-Rank Asymmetric Reconstruction):** Combines low-rank decomposition and asymmetric convolution for efficient directional feature fusion.  
 
 ---
 
