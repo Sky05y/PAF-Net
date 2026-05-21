@@ -24,7 +24,7 @@ def main():
     print(f"Run Name: {args.run_name}")
     
     model = YOLO(args.model)
-    model.train(data=args.dataset_config, epochs=args.epochs, batch=args.batch, project=args.output_dir, name=args.run_name)  # 배치 사이즈 인자 이름 수정
+    model.train(data=args.dataset_config, epochs=args.epochs, batch=args.batch, project=args.output_dir, name=args.run_name)
 
 if __name__ == '__main__':
     main()
