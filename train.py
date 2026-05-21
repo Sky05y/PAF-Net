@@ -7,6 +7,7 @@ def parse_args():
     parser.add_argument('--data_dir', type=str, default=None, help='the dir to data')
     parser.add_argument('--epochs', type=int, default=10, help='number of epochs to train')
     parser.add_argument('--batch', type=int, default=16, help='batch size for training')
+    parser.add_argument('--device', type=str, default='cpu',help='device to run on, e.g. cuda:0 or cpu')
     parser.add_argument('--dataset_config', type=str, required=True, help='path to dataset config file')
     parser.add_argument('--output_dir', type=str, default='runs/train', help='directory to save training results')
     parser.add_argument('--run_name', type=str, default='exp', help='name of the training run')
@@ -24,7 +25,7 @@ def main():
     print(f"Run Name: {args.run_name}")
     
     model = YOLO(args.model)
-    model.train(data=args.dataset_config, epochs=args.epochs, batch=args.batch, project=args.output_dir, name=args.run_name)
+    model.train(data=args.dataset_config, epochs=args.epochs, batch=args.batch, device=args.device, project=args.output_dir, name=args.run_name)
 
 if __name__ == '__main__':
     main()
