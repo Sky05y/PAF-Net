@@ -27,7 +27,7 @@ pip install -r requirements.txt
 ### Command Line
 
 ```bash
-python train.py --model cfg/models/PAF-Net.yaml --dataset_config cfg/datasets/BoneFracture.yaml --epochs 200 --output_dir ./output --run_name PAFNet_BoneFracture_Exp01
+python train.py --model cfg/models/PAF-Net.yaml --dataset_config cfg/datasets/BoneFracture.yaml --epochs 200 --device cuda:0 --output_dir ./output --run_name PAFNet_BoneFracture_Exp01
 ```
 
 ---
