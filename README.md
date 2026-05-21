@@ -8,6 +8,7 @@ The model integrates three major components:
 **PDC (Pinwheel-shaped Dual-Split Attention Convolution):** Suppresses background interference and enhances skeletal region perception.  
 **CAGS (Content-Aware Guided Sampling):** Dynamically refines upsampling to restore fine fracture details.  
 **LR (Low-Rank Asymmetric Reconstruction):** Combines low-rank decomposition and asymmetric convolution for efficient directional feature fusion.  
+<img width="915" height="687" alt="image" src="https://github.com/user-attachments/assets/d39568db-0ba6-4fa0-aff3-54aa66ce62c6" />
 
 ---
 
